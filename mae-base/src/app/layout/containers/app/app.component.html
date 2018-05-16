@@ -1,0 +1,21 @@
+<mae-layout>
+  <mae-sidenav [open]="showSidenav$ | async">
+    <mae-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
+      My Collection
+    </mae-nav-item>
+    <mae-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/books/find" icon="search" hint="Find your next book!">
+      Browse Books
+    </mae-nav-item>
+    <mae-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">
+      Sign In
+    </mae-nav-item>
+    <mae-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
+      Sign Out
+    </mae-nav-item>
+  </mae-sidenav>
+  <mae-toolbar (openMenu)="openSidenav()">
+    Book Collection
+  </mae-toolbar>
+
+  <router-outlet></router-outlet>
+</mae-layout>
